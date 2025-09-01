@@ -27,7 +27,7 @@
       margin:0;
       font-family:Poppins, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       color:var(--text);
-      background:linear-gradient(180deg, #000 0%, #111 100%);
+      background:#000 url('https://www.transparenttextures.com/patterns/dark-leather.png');
     }
     a{color:var(--gold); text-decoration:none}
     a:hover{text-decoration:underline}
@@ -48,7 +48,7 @@
 
     /* Hero */
     .hero{position:relative; overflow:hidden;}
-    .hero-inner{max-width:var(--maxw); margin:0 auto; padding:96px 16px 72px; display:grid; grid-template-columns:1.1fr .9fr; gap:24px}
+    .hero-inner{max-width:var(--maxw); margin:0 auto; padding:96px 16px 72px; display:grid; grid-template-columns:1.1fr .9fr; gap:24px; align-items:center;}
     .badge{display:inline-block; padding:6px 10px; border:1px solid var(--gold); color:var(--gold); border-radius:999px; font-size:12px; letter-spacing:.4px}
     h1{margin:16px 0 12px; font-size:44px; line-height:1.1}
     .lead{color:#d9d9d9; max-width:58ch}
@@ -56,7 +56,12 @@
     .btn{display:inline-block; padding:12px 18px; border-radius:999px; border:1px solid var(--gold);}
     .btn.fill{background:var(--gold); color:#111; font-weight:700}
     .btn.ghost{color:var(--gold)}
-    .hero-art{background:url('https://images.unsplash.com/photo-1519162808019-7de1683fa0e8?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat; border:1px solid rgba(212,175,55,.25); border-radius:18px; min-height:260px}
+    .hero-art{background:url('https://images.unsplash.com/photo-1519162808019-7de1683fa0e8?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat; border:1px solid rgba(212,175,55,.25); border-radius:18px; min-height:280px; animation:slowZoom 20s ease-in-out infinite alternate}
+
+    @keyframes slowZoom {
+      from { transform:scale(1); }
+      to { transform:scale(1.1); }
+    }
 
     /* Sections */
     section{scroll-margin-top:72px}
@@ -70,18 +75,21 @@
     /* Members */
     .grid{display:grid; gap:16px}
     .grid.m3{grid-template-columns:repeat(3,1fr)}
-    .member{background:var(--card); border:1px solid rgba(212,175,55,.18); border-radius:16px; overflow:hidden}
+    .member{background:var(--card); border:1px solid rgba(212,175,55,.18); border-radius:16px; overflow:hidden; transition:transform .3s ease}
+    .member:hover{transform:translateY(-6px)}
     .member img{width:100%; height:180px; object-fit:cover}
     .member .body{padding:14px}
     .muted{color:var(--muted)}
 
     /* Media */
     .media-grid{display:grid; gap:12px; grid-template-columns:repeat(3,1fr)}
-    .media-item{aspect-ratio:16/9; background:#1c1c1c; border:1px dashed rgba(212,175,55,.35); border-radius:12px; display:grid; place-items:center; color:var(--muted)}
+    .media-item{aspect-ratio:16/9; background:#1c1c1c; border:1px dashed rgba(212,175,55,.35); border-radius:12px; display:grid; place-items:center; color:var(--muted); transition:all .3s ease}
+    .media-item:hover{background:#222; color:var(--gold)}
 
     /* Events */
     .events{display:grid; gap:12px}
-    .event{display:flex; gap:12px; align-items:center; background:var(--card); border:1px solid rgba(212,175,55,.18); border-radius:12px; padding:12px}
+    .event{display:flex; gap:12px; align-items:center; background:var(--card); border:1px solid rgba(212,175,55,.18); border-radius:12px; padding:12px; transition:transform .3s ease}
+    .event:hover{transform:scale(1.02)}
     .date{min-width:88px; text-align:center; border-right:1px solid rgba(212,175,55,.18); padding-right:12px}
     .date .d{font-size:22px; font-weight:700; color:var(--gold)}
 
@@ -112,7 +120,6 @@
   <header class="nav" id="top">
     <div class="nav-inner">
       <a class="brand" href="#top" aria-label="Elite Groovers home">
-        <!-- Replace with real logo -->
         <img src="https://dummyimage.com/80x80/d4af37/000.png&text=EG" alt="Elite Groovers logo" />
         <span>Elite Groovers</span>
       </a>
@@ -129,8 +136,8 @@
     <div class="hero-inner">
       <div>
         <span class="badge">Takoradi • Ghana</span>
-        <h1>Horn‑Driven Energy. Live and Loud.</h1>
-        <p class="lead">Elite Groovers Brass Band blends tradition with a modern pulse. From street parades to main‑stage shows, we bring gold‑standard brass to every crowd.</p>
+        <h1>Elite Groovers Brass Band</h1>
+        <p class="lead">Elite Groovers is a brass led band with the trumpet at its heart. The band was formed to show that brass can carry the melody while bringing joy, energy and a true Ghanaian sound to every event.</p>
         <div class="cta">
           <a class="btn fill" href="#media">Listen / Watch</a>
           <a class="btn ghost" href="#contact">Book Elite Groovers</a>
@@ -141,22 +148,23 @@
   </section>  <!-- About -->  <section id="about">
     <div class="wrap">
       <h2 class="section-title">About</h2>
-      <p class="section-sub">Short bio for quick reading. Expand later with full story.</p>
       <div class="card">
-        <!-- Replace this paragraph with the real bio -->
-        <p><strong>Elite Groovers</strong> is a vibrant brass‑led cover band from <em>Takoradi, Ghana</em>. With horns at the heart of their sound, they bring energy, rhythm, and soul to every performance.</p>
+        <p><strong>Elite Groovers Brass Band</strong> was founded in Takoradi, Ghana, in 2020 by <em>Alex Halm</em>. What began as a small group of passionate musicians has now grown into one of the largest brass bands in Ghana, with over 70 members today.</p>
+        <p>The band is built around a unique sound: trumpets and horns leading the melody, supported by drums, keyboards, and bass. Their goal has always been simple – to bring joy, rhythm, and a true Ghanaian spirit to every performance.</p>
+        <p>Elite Groovers play at weddings, festivals, concerts, and major events, and have also collaborated with artists across Ghana, blending their brass driven style with modern afrobeat and contemporary music.</p>
+        <p>Their mission is clear: to take Ghana’s brass tradition to the world stage.</p>
       </div>
     </div>
   </section>  <!-- Members -->  <section id="members">
     <div class="wrap">
       <h2 class="section-title">Band Members</h2>
-      <p class="section-sub">Swap placeholders with real photos, names, and roles.</p>
+      <p class="section-sub">Elite Groovers has grown to nearly 80 members. Here are a few of the key faces you’ll see on stage.</p>
       <div class="grid m3">
         <article class="member">
           <img src="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?q=80&w=1200&auto=format&fit=crop" alt="Member placeholder" />
           <div class="body">
-            <h3>Member Name</h3>
-            <p class="muted">Instrument / Role</p>
+            <h3>Alex Halm</h3>
+            <p class="muted">Founder & Band Leader</p>
           </div>
         </article>
         <article class="member">
@@ -178,17 +186,17 @@
   </section>  <!-- Media -->  <section id="media">
     <div class="wrap">
       <h2 class="section-title">Media</h2>
-      <p class="section-sub">Embed YouTube, SoundCloud, or upload photos later.</p>
+      <p class="section-sub">Photos and videos coming soon.</p>
       <div class="media-grid">
-        <div class="media-item">Video / Photo</div>
-        <div class="media-item">Video / Photo</div>
-        <div class="media-item">Video / Photo</div>
+        <div class="media-item">Photo / Video</div>
+        <div class="media-item">Photo / Video</div>
+        <div class="media-item">Photo / Video</div>
       </div>
     </div>
   </section>  <!-- Events -->  <section id="events">
     <div class="wrap">
       <h2 class="section-title">Events</h2>
-      <p class="section-sub">Add dates as they come in.</p>
+      <p class="section-sub">Upcoming performances will be listed here.</p>
       <div class="events">
         <div class="event">
           <div class="date"><div class="d">31</div><div class="muted">Aug 2025</div></div>
@@ -197,19 +205,11 @@
             <div class="muted">Sekondi‑Takoradi • 6:00 PM</div>
           </div>
         </div>
-        <div class="event">
-          <div class="date"><div class="d">14</div><div class="muted">Sep 2025</div></div>
-          <div>
-            <strong>Beach Festival Stage</strong>
-            <div class="muted">Busua • 8:00 PM</div>
-          </div>
-        </div>
       </div>
     </div>
   </section>  <!-- Contact -->  <section id="contact">
     <div class="wrap">
       <h2 class="section-title">Bookings & Contact</h2>
-      <p class="section-sub">Replace with the band email/phone or keep the form.</p>
       <div class="contact">
         <div class="panel">
           <form name="contact" netlify>
