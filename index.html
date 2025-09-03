@@ -1,232 +1,400 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Elite Groovers</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Elite Groovers Brass Band</title>
+
+  <!-- Display fonts: cinematic title + clean sans -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
   <style>
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background-color: #000;
-      color: #fff;
+    /* Theme */
+    :root{
+      --gold: #d4af37;
+      --bg: #040405;
+      --card: #0a0a0a;
+      --muted: #bfbfbf;
+      --glass: rgba(255,255,255,0.03);
+      --ease: cubic-bezier(.2,.9,.2,1);
     }
-    header {
-      position: relative;
-      height: 100vh;
-      overflow: hidden;
-    }
-    .slideshow {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      z-index: -1;
-    }
-    .slideshow img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      position: absolute;
-      opacity: 0;
-      animation: slideShow 12s infinite;
-    }
-    .slideshow img:nth-child(1) { animation-delay: 0s; }
-    .slideshow img:nth-child(2) { animation-delay: 6s; }
+    html,body{height:100%;margin:0;background:var(--bg);color:#fff;font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;overflow-x:hidden}
+    img{display:block;max-width:100%;height:auto}
+    a{color:inherit;text-decoration:none}
 
-    @keyframes slideShow {
-      0% {opacity: 0;}
-      10% {opacity: 1;}
-      40% {opacity: 1;}
-      50% {opacity: 0;}
-      100% {opacity: 0;}
-    }
+    /* Layout helpers */
+    .wrap{max-width:1200px;margin:0 auto;padding:0 20px}
+    section{padding:80px 0;border-top:1px solid rgba(255,255,255,0.04)}
+    h1,h2,h3{margin:0}
+    h2{font-family:Cinzel,serif;color:var(--gold);letter-spacing:0.02em;font-weight:700;text-align:center}
+    p.lead{max-width:900px;margin:16px auto 0;color:#eaeaea;text-align:center;line-height:1.6}
+    .sub{color:var(--muted);text-align:center;margin-top:10px}
 
-    .hero-content {
-      position: relative;
-      text-align: center;
-      top: 50%;
-      transform: translateY(-50%);
+    /* Nav */
+    .nav{
+      position:fixed;left:50%;top:18px;transform:translateX(-50%);z-index:120;
+      background:linear-gradient(180deg, rgba(0,0,0,.7), rgba(0,0,0,.35));
+      border-radius:999px;padding:8px 14px;display:flex;gap:12px;align-items:center;border:1px solid rgba(212,175,55,.18);
+      backdrop-filter:blur(6px)
     }
-    .hero-content img {
-      width: 120px;
-      margin-bottom: 20px;
+    .nav img{width:34px;height:34px;object-fit:contain;filter:drop-shadow(0 0 8px rgba(212,175,55,.35))}
+    .nav a{font-weight:600;font-size:.95rem;padding:6px 8px;border-radius:8px;color:#eee}
+    .nav a:hover{color:var(--gold);background:rgba(255,255,255,0.02)}
+
+    /* CINEMATIC HERO */
+    header.hero{
+      position:relative;height:100vh;display:grid;place-items:center;overflow:hidden;
+      --ken: scale(1.06);
     }
-    .hero-content h1 {
-      font-size: 3rem;
-      color: gold;
-      margin: 0;
-      text-shadow: 0 0 20px #000;
+    .hero-stage{
+      position:absolute;inset:0;z-index:0;overflow:hidden;
+      background:#000;
     }
-    .hero-content p {
-      font-size: 1.2rem;
-      margin-top: 10px;
+    .hero-slide{
+      position:absolute;inset:0;background-position:center;background-size:cover;opacity:0;transform:scale(1);
+      transition:opacity 1.2s var(--ease), transform 14s linear;
+      will-change:opacity,transform;
     }
-    section {
-      padding: 80px 20px;
-      max-width: 1200px;
-      margin: auto;
-    }
-    h2 {
-      font-size: 2rem;
-      color: gold;
-      margin-bottom: 20px;
-      text-align: center;
-    }
-    .about p {
-      font-size: 1.1rem;
-      line-height: 1.7;
-      text-align: center;
-    }
-    .founder img {
-      width: 200px;
-      border-radius: 50%;
-      display: block;
-      margin: 20px auto;
-      border: 3px solid gold;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-    }
-    .grid img {
-      width: 100%;
-      border-radius: 10px;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .grid img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 20px gold;
-    }
-    .core {
-      border: 3px solid gold;
-    }
-    iframe {
-      width: 100%;
-      height: 400px;
-      border: none;
-      border-radius: 10px;
-    }
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: #111;
-      color: #aaa;
-      font-size: 0.9rem;
-    }
-    footer span {
-      color: gold;
-    }
-    .videos {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
-    }
-    .videos iframe {
-      width: 100%;
-      height: 250px;
-    }
+    .hero-slide.show{opacity:1;transform:scale(1.08)}
+    /* gentle film grain */
+    .hero-film{position:absolute;inset:0;mix-blend-mode:overlay;opacity:.08;background-image: url('https://www.transparenttextures.com/patterns/45-degree-fabric-light.png');}
+    /* particles */
+    .hero-particles{position:absolute;inset:0;z-index:1;pointer-events:none}
+    .particle{width:6px;height:6px;border-radius:50%;position:absolute;background:radial-gradient(circle,var(--gold),rgba(212,175,55,.2));opacity:.85;filter:blur(.6px)}
+    /* center content */
+    .hero-content{position:relative;z-index:18;text-align:center;padding:30px 20px}
+    .hero-logo{width:150px;height:150px;object-fit:contain;margin:0 auto 18px;filter:drop-shadow(0 0 20px rgba(212,175,55,.25));transform-origin:center center;animation:logoBeat 3.6s infinite}
+    @keyframes logoBeat{0%{transform:translateY(0) scale(1)}50%{transform:translateY(-6px) scale(1.02)}100%{transform:translateY(0) scale(1)}}
+    .hero-title{font-family:Cinzel,serif;font-size:clamp(44px,8vw,110px);line-height:0.9;letter-spacing:.02em;background:linear-gradient(90deg,#fff,var(--gold),#fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:glide 8s linear infinite; margin-bottom:10px}
+    @keyframes glide{to{background-position:200% center}}
+    .hero-tag{font-size:1.2rem;color:#eee;margin:10px auto 22px;max-width:920px}
+    .hero-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+    .btn{padding:12px 18px;border-radius:12px;border:1px solid rgba(255,255,255,0.05);background:rgba(255,255,255,0.02);color:#fff;font-weight:700;cursor:pointer;transition:all .2s var(--ease)}
+    .btn.primary{background:linear-gradient(180deg,var(--gold),#b88b21);color:#000;border-color:#000;box-shadow:0 10px 30px rgba(212,175,55,.12)}
+    .btn:hover{transform:translateY(-4px);box-shadow:0 14px 40px rgba(0,0,0,.6)}
+    .hero-shadow{position:absolute;left:50%;transform:translateX(-50%);bottom:18%;width:80%;height:1px;background:linear-gradient(90deg,transparent,rgba(0,0,0,.6),transparent);opacity:.7;z-index:10}
+
+    /* Content layout */
+    .two-col{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center}
+    @media(max-width:1000px){.two-col{grid-template-columns:1fr;}.hero-title{font-size:48px}}
+
+    /* Grid small galleries */
+    .card{background:var(--card);padding:20px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);box-shadow:0 16px 40px rgba(0,0,0,.6)}
+    .band-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px}
+    .band-grid img{width:100%;height:220px;object-fit:cover;border-radius:10px;transition:transform .35s var(--ease),box-shadow .35s var(--ease)}
+    .band-grid img:hover{transform:translateY(-6px) scale(1.03);box-shadow:0 30px 60px rgba(0,0,0,.6)}
+    .core-highlight{box-shadow:0 0 0 4px rgba(212,175,55,.06), 0 20px 60px rgba(212,175,55,.06)}
+
+    /* media */
+    .videos{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:18px}
+
+    /* booking */
+    .booking{max-width:760px;margin:0 auto}
+    .booking form{display:grid;gap:12px}
+    .booking input,.booking textarea{padding:12px;border-radius:8px;border:none;background:#111;color:#fff}
+    .booking .note{color:var(--muted);text-align:center;margin-top:12px}
+
+    /* footer */
+    footer{padding:30px 0;text-align:center;color:#bfbfbf;background:linear-gradient(180deg,#030303,#070707);border-top:1px solid rgba(255,255,255,.03)}
+    footer strong{color:#fff}
+    footer span{color:var(--gold)}
+
+    /* subtle reveal on scroll */
+    .reveal{opacity:0;transform:translateY(18px);transition:all .8s var(--ease)}
+    .reveal.show{opacity:1;transform:none}
+
+    /* small helpers */
+    .muted{color:var(--muted);font-size:.95rem}
   </style>
 </head>
 <body>
 
-  <!-- Hero -->
-  <header>
-    <div class="slideshow">
-      <img src="hs.jpg" alt="Hero Image 1">
-      <img src="hs2.jpg" alt="Hero Image 2">
+  <!-- top nav -->
+  <nav class="nav" aria-label="Main navigation">
+    <img src="images/logo.jpg" alt="Elite Groovers logo">
+    <a href="#about">About</a>
+    <a href="#founder">Founder</a>
+    <a href="#band">Band</a>
+    <a href="#fans">Fans</a>
+    <a href="#highlights">Highlights</a>
+    <a href="#media">Media</a>
+    <a href="#events">Events</a>
+    <a href="#merch">Merch</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <!-- hero cinematic -->
+  <header class="hero" id="top" role="banner">
+    <div class="hero-stage" aria-hidden="true">
+      <div id="slide1" class="hero-slide" style="background-image:url('images/hs.jpg')"></div>
+      <div id="slide2" class="hero-slide" style="background-image:url('images/hs1.jpg')"></div>
+      <div id="slide3" class="hero-slide" style="background-image:url('images/hs2.jpg')"></div>
+      <div class="hero-film"></div>
+      <div class="hero-particles" id="particles"></div>
+      <div class="texture" style="opacity:.12"></div>
     </div>
+
     <div class="hero-content">
-      <img src="logo.jpg" alt="Elite Groovers Logo">
-      <h1>Elite Groovers</h1>
-      <p>Brass that leads. Rhythm that unites.</p>
+      <img class="hero-logo" src="images/logo.jpg" alt="Elite Groovers logo">
+      <h1 class="hero-title">ELITE GROOVERS</h1>
+      <p class="hero-tag">Brass that leads. Rhythm that moves. Born in Ghana, heard around the world.</p>
+
+      <div class="hero-cta">
+        <a class="btn primary" href="#events">Next Event</a>
+        <a class="btn" href="#media">Watch live</a>
+      </div>
     </div>
+
+    <div class="hero-shadow" aria-hidden="true"></div>
   </header>
 
-  <!-- About -->
-  <section class="about">
-    <h2>About Us</h2>
-    <p>
-      Elite Groovers is proof that brass can lead, not just follow. What started in Takoradi with a small group of passionate musicians has grown into a powerful ensemble of nearly 80 members, blending Ghanaian rhythms, rich brass melodies, and unstoppable energy.
-      With every performance, they don’t just play music — they transform it into an experience. Brass carries the melody, percussion drives the heartbeat, and together they create a sound that fills streets, festivals, and international stages alike.
-      From weddings to global festivals, Elite Groovers have become more than a band — they are a movement of sound, culture, and joy.
-    </p>
-  </section>
+  <!-- about -->
+  <section id="about" class="reveal">
+    <div class="wrap">
+      <h2>About Elite Groovers</h2>
+      <p class="sub">More than music. A sound shaped by brass and rhythm.</p>
 
-  <!-- Founder -->
-  <section class="founder">
-    <h2>Founder</h2>
-    <img src="ah.jpg" alt="Founder Alex Halm">
-    <p style="text-align:center;">Alex Halm founded Elite Groovers with a vision to let brass instruments lead the sound, building a band that grew from a small group in Takoradi to an internationally recognized ensemble.</p>
-  </section>
+      <div class="two-col" style="margin-top:22px">
+        <div class="card">
+          <p class="muted">Elite Groovers began in Takoradi with a small group of friends and a single idea: let brass carry the story. The band grew into a large ensemble that blends horn melody, percussion, and Ghanaian groove into performances that feel like celebration.</p>
+          <p style="margin-top:12px" class="muted">They play parades, festivals, weddings and global stages. The sound is big, warm, and alive.</p>
+          <p class="quote" style="margin-top:18px">“Music moves what words cannot hold.”</p>
+        </div>
 
-  <!-- Band -->
-  <section class="band">
-    <h2>Meet the Band</h2>
-    <div class="grid">
-      <!-- Core Members -->
-      <img src="cm.jpg" class="core" alt="">
-      <img src="cm2.jpg" class="core" alt="">
-      <img src="cm3.jpg" class="core" alt="">
-      <img src="cm4.jpg" class="core" alt="">
-      <img src="cm5.jpg" class="core" alt="">
-      <!-- Other Members -->
-      <img src="m.jpg" alt="">
-      <img src="m2.jpg" alt="">
-      <img src="m4.jpg" alt="">
-      <img src="m5.jpg" alt="">
-      <img src="m9.jpg" alt="">
+        <div>
+          <img src="images/hs3.jpg" alt="Elite Groovers live" style="border-radius:12px;box-shadow:0 18px 40px rgba(0,0,0,.6)">
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- Fans -->
-  <section class="fans">
-    <h2>Fans & Community</h2>
-    <div class="grid">
-      <img src="f.jpg" alt="">
-      <img src="f2.jpg" alt="">
-      <img src="f3.jpg" alt="">
-      <img src="f4.jpg" alt="">
+  <!-- founder -->
+  <section id="founder" class="reveal">
+    <div class="wrap">
+      <h2>Founder Alex Halm</h2>
+      <p class="sub">Vision, craft, community.</p>
+
+      <div class="two-col" style="margin-top:22px">
+        <div>
+          <img src="images/ah.jpg" alt="Alex Halm" style="border-radius:12px;box-shadow:0 20px 50px rgba(0,0,0,.6)">
+        </div>
+        <div class="card">
+          <h3 style="margin-bottom:8px">Leadership in sound</h3>
+          <p class="muted">Alex formed the band with a belief that brass can lead the conversation. He built a culture that values precision, joy, and performance. Under his direction the band grew and began to travel beyond Ghana to share the groove.</p>
+          <p class="quote" style="margin-top:12px">“The sound of many becomes the voice of one.”</p>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- Gallery -->
-  <section class="gallery">
-    <h2>Highlights</h2>
-    <div class="grid">
-      <img src="e.jpg" alt="">
-      <img src="e2.jpg" alt="">
+  <!-- band -->
+  <section id="band" class="reveal">
+    <div class="wrap">
+      <h2>Meet the band</h2>
+      <p class="sub">One family. Many voices. Core members highlighted in gold.</p>
+
+      <div style="margin-top:22px" class="band-grid">
+        <!-- core members first -->
+        <img src="images/cm1.jpg" alt="Core member" class="core-highlight">
+        <img src="images/cm2.jpg" alt="Core member" class="core-highlight">
+        <img src="images/cm3.jpg" alt="Core member" class="core-highlight">
+        <img src="images/cm4.jpg" alt="Core member" class="core-highlight">
+        <img src="images/cm5.jpg" alt="Core member" class="core-highlight">
+        <img src="images/cm6.jpg" alt="Core member" class="core-highlight">
+        <img src="images/cm7.jpg" alt="Core member" class="core-highlight">
+
+        <!-- rest of band -->
+        <img src="images/m1.jpg" alt="Band member">
+        <img src="images/m2.jpg" alt="Band member">
+        <img src="images/m3.jpg" alt="Band member">
+        <img src="images/m4.jpg" alt="Band member">
+        <img src="images/m5.jpg" alt="Band member">
+        <img src="images/m6.jpg" alt="Band member">
+        <img src="images/m7.jpg" alt="Band member">
+        <img src="images/m8.jpg" alt="Band member">
+      </div>
     </div>
   </section>
 
-  <!-- Media -->
-  <section class="media">
-    <h2>Media</h2>
-    <div class="videos">
-      <iframe src="https://www.youtube.com/embed/e73PEGQO31s" title="Elite Groovers - With You ft. Omah Lay" allowfullscreen></iframe>
-      <iframe src="https://www.youtube.com/embed/ruIb5ZdmvEU" title="Elite Groovers in UCC congregation" allowfullscreen></iframe>
-      <iframe src="https://www.youtube.com/embed/U-SB237NhRc" title="Elite Groovers tribute to KODA" allowfullscreen></iframe>
+  <!-- fans -->
+  <section id="fans" class="reveal">
+    <div class="wrap">
+      <h2>Fans and community</h2>
+      <p class="sub">From Accra to abroad the fans carry the groove.</p>
+
+      <div style="margin-top:22px" class="grid">
+        <img src="images/f1.jpg" alt="Fan photo">
+        <img src="images/f2.jpg" alt="Fan photo">
+        <img src="images/f3.jpg" alt="Fan photo">
+        <img src="images/f4.jpg" alt="Fan photo">
+      </div>
     </div>
   </section>
 
-  <!-- Events -->
-  <section class="events">
-    <h2>Events & Bookings</h2>
-    <p style="text-align:center;">Stay tuned for our next big performance. To book Elite Groovers, contact us at <span>booking@elitegroovers.com</span>.</p>
+  <!-- highlights -->
+  <section id="highlights" class="reveal">
+    <div class="wrap">
+      <h2>Highlights</h2>
+      <p class="sub">Moments from festivals, tours and shows.</p>
+
+      <div style="margin-top:22px" class="grid">
+        <img src="images/e1.jpg" alt="Highlight">
+        <img src="images/e2.jpg" alt="Highlight">
+        <img src="images/e3.jpg" alt="Highlight">
+        <img src="images/e4.jpg" alt="Highlight">
+      </div>
+    </div>
   </section>
 
-  <!-- Merch -->
-  <section class="merch">
-    <h2>Merch</h2>
-    <p style="text-align:center;">Exclusive merchandise — coming soon.</p>
+  <!-- media -->
+  <section id="media" class="reveal">
+    <div class="wrap">
+      <h2>Media</h2>
+      <p class="sub">Watch performances and tributes.</p>
+
+      <div style="margin-top:22px" class="videos">
+        <div class="yt card">
+          <iframe src="https://www.youtube.com/embed/ruIb5ZdmvEU" title="UCC 56th Congregation" allowfullscreen></iframe>
+        </div>
+        <div class="yt card">
+          <iframe src="https://www.youtube.com/embed/21nskFKgaps" title="KODA Tribute" allowfullscreen></iframe>
+        </div>
+        <div class="yt card">
+          <iframe src="https://www.youtube.com/embed/e73PEGQO31s" title="With You cover" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <!-- Footer -->
+  <!-- events -->
+  <section id="events" class="reveal">
+    <div class="wrap">
+      <h2>Events and bookings</h2>
+      <p class="sub">Book Elite Groovers for festivals, weddings, and private events.</p>
+
+      <div style="margin-top:22px" class="booking card">
+        <form id="bookingForm">
+          <input name="name" placeholder="Your name" required>
+          <input name="email" type="email" placeholder="Email address" required>
+          <input name="phone" placeholder="Phone or WhatsApp" required>
+          <input name="date" placeholder="Event date and city" required>
+          <textarea name="details" rows="5" placeholder="Tell us about your event" required></textarea>
+
+          <div style="display:flex;gap:12px;justify-content:center;margin-top:8px">
+            <button type="button" onclick="sendBooking()" class="btn primary">Send booking request</button>
+            <a class="btn" href="mailto:booking@elitegroovers.com">Email booking</a>
+          </div>
+
+          <p class="note muted" style="margin-top:12px">We will confirm availability and follow up by email or WhatsApp.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- merch -->
+  <section id="merch" class="reveal">
+    <div class="wrap">
+      <h2>Merch</h2>
+      <p class="sub">Exclusive items coming soon. Wear the groove.</p>
+
+      <div style="margin-top:22px" class="grid">
+        <div class="card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:260px">
+          <img src="images/hs3.jpg" alt="Merch placeholder" style="height:140px;object-fit:cover;border-radius:8px;margin-bottom:12px">
+          <strong>EG Classic tee</strong>
+          <div class="muted" style="margin-top:8px">Black and gold</div>
+        </div>
+
+        <div class="card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:260px">
+          <img src="images/hs4.jpg" alt="Merch placeholder" style="height:140px;object-fit:cover;border-radius:8px;margin-bottom:12px">
+          <strong>EG Cap</strong>
+          <div class="muted" style="margin-top:8px">Signature crest</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- contact -->
+  <section id="contact" class="reveal">
+    <div class="wrap">
+      <h2>Contact</h2>
+      <p class="sub">For bookings, press, and partnerships.</p>
+      <p style="text-align:center;margin-top:14px">Email <a href="mailto:booking@elitegroovers.com" style="color:var(--gold)">booking@elitegroovers.com</a> or WhatsApp <a href="https://wa.me/233000000000" style="color:var(--gold)">+233 0 00 000 0000</a></p>
+    </div>
+  </section>
+
+  <!-- footer -->
   <footer>
-    Elite Groovers © 2025 | <span>Scribe Haus Studio</span>
+    <div class="wrap">
+      <p style="margin:0">© 2025 Elite Groovers • <span>Scribe Haus Studio</span></p>
+    </div>
   </footer>
 
+  <!-- Scripts: slideshow, particles, reveal, booking mailto fallback -->
+  <script>
+    // Slideshow behavior
+    (function(){
+      const slides = Array.from(document.querySelectorAll('.hero-slide'));
+      let index = 0;
+      function show(i){
+        slides.forEach((s,si)=> s.classList.toggle('show', si === i));
+      }
+      show(0);
+      setInterval(()=>{ index = (index + 1) % slides.length; show(index); }, 7000);
+    })();
+
+    // particles simple scatter
+    (function(){
+      const container = document.getElementById('particles');
+      if(!container) return;
+      const num = 28;
+      for(let i=0;i<num;i++){
+        const el = document.createElement('div');
+        el.className = 'particle';
+        const x = Math.random()*100;
+        const y = Math.random()*100;
+        const scale = 0.5 + Math.random()*1.8;
+        el.style.left = x + '%';
+        el.style.top = y + '%';
+        el.style.transform = 'scale(' + scale + ')';
+        el.style.opacity = 0.25 + Math.random()*0.6;
+        container.appendChild(el);
+        // subtle float
+        (function(target, sx, sy){
+          let t = 0;
+          function anim(){
+            t += 0.006 + Math.random()*0.008;
+            target.style.transform = 'translate3d(' + Math.sin(t+sx)*6 + 'px,' + Math.cos(t+sy)*4 + 'px,0) scale(' + scale + ')';
+            requestAnimationFrame(anim);
+          }
+          anim();
+        })(el, Math.random()*10, Math.random()*10);
+      }
+    })();
+
+    // reveal on scroll
+    (function(){
+      const obs = new IntersectionObserver((entries)=>{
+        entries.forEach(e=>{
+          if(e.isIntersecting) e.target.classList.add('show');
+        });
+      }, {threshold: 0.12});
+      document.querySelectorAll('.reveal').forEach(el=> obs.observe(el));
+    })();
+
+    // booking mailto fallback
+    function sendBooking(){
+      const f = document.getElementById('bookingForm');
+      if(!f) return;
+      const data = new FormData(f);
+      const name = encodeURIComponent(data.get('name') || '');
+      const email = encodeURIComponent(data.get('email') || '');
+      const phone = encodeURIComponent(data.get('phone') || '');
+      const date = encodeURIComponent(data.get('date') || '');
+      const details = encodeURIComponent(data.get('details') || '');
+      const subject = encodeURIComponent('Booking request Elite Groovers');
+      const body = `Name: ${decodeURIComponent(name)}%0D%0AEmail: ${decodeURIComponent(email)}%0D%0APhone: ${decodeURIComponent(phone)}%0D%0ADate and city: ${decodeURIComponent(date)}%0D%0A%0D%0ADetails:%0D%0A${decodeURIComponent(details)}`;
+      window.location.href = `mailto:booking@elitegroovers.com?subject=${subject}&body=${body}`;
+    }
+  </script>
 </body>
 </html>
