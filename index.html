@@ -30,20 +30,16 @@
       object-fit: cover;
       position: absolute;
       opacity: 0;
-      animation: slideShow 36s infinite;
+      animation: slideShow 12s infinite;
     }
     .slideshow img:nth-child(1) { animation-delay: 0s; }
     .slideshow img:nth-child(2) { animation-delay: 6s; }
-    .slideshow img:nth-child(3) { animation-delay: 12s; }
-    .slideshow img:nth-child(4) { animation-delay: 18s; }
-    .slideshow img:nth-child(5) { animation-delay: 24s; }
-    .slideshow img:nth-child(6) { animation-delay: 30s; }
 
     @keyframes slideShow {
       0% {opacity: 0;}
       10% {opacity: 1;}
-      30% {opacity: 1;}
-      40% {opacity: 0;}
+      40% {opacity: 1;}
+      50% {opacity: 0;}
       100% {opacity: 0;}
     }
 
@@ -52,21 +48,28 @@
       text-align: center;
       top: 50%;
       transform: translateY(-50%);
+      opacity: 0;
+      animation: fadeInUp 2s ease forwards;
     }
     .hero-content img {
-      width: 120px;
+      width: 130px;
       margin-bottom: 20px;
     }
     .hero-content h1 {
-      font-size: 3rem;
+      font-size: 3.2rem;
       color: gold;
       margin: 0;
       text-shadow: 0 0 20px #000;
     }
     .hero-content p {
-      font-size: 1.2rem;
-      margin-top: 10px;
+      font-size: 1.3rem;
+      margin-top: 12px;
     }
+    @keyframes fadeInUp {
+      from {opacity: 0; transform: translateY(30px);}
+      to {opacity: 1; transform: translateY(-50%);}
+    }
+
     section {
       padding: 80px 20px;
       max-width: 1200px;
@@ -78,13 +81,12 @@
       margin-bottom: 20px;
       text-align: center;
     }
-    .about, .founder, .band, .fans, .gallery, .media, .events, .merch {
-      margin-bottom: 60px;
-    }
     .about p {
       font-size: 1.1rem;
       line-height: 1.7;
       text-align: center;
+      max-width: 900px;
+      margin: auto;
     }
     .founder img {
       width: 200px;
@@ -126,6 +128,15 @@
     footer span {
       color: gold;
     }
+    .videos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .videos iframe {
+      width: 100%;
+      height: 250px;
+    }
   </style>
 </head>
 <body>
@@ -133,15 +144,11 @@
   <!-- Hero -->
   <header>
     <div class="slideshow">
-      <img src="images/hero1.jpg" alt="">
-      <img src="images/hero2.jpg" alt="">
-      <img src="images/hero3.jpg" alt="">
-      <img src="images/hero4.jpg" alt="">
-      <img src="images/hero5.jpg" alt="">
-      <img src="images/hero6.jpg" alt="">
+      <img src="hs.jpg" alt="Hero Image 1">
+      <img src="hs2.jpg" alt="Hero Image 2">
     </div>
     <div class="hero-content">
-      <img src="images/logo.jpg" alt="Elite Groovers Logo">
+      <img src="logo.jpg" alt="Elite Groovers Logo">
       <h1>Elite Groovers</h1>
       <p>Brass that leads. Rhythm that unites.</p>
     </div>
@@ -151,16 +158,20 @@
   <section class="about">
     <h2>About Us</h2>
     <p>
-      Elite Groovers is proof that brass can lead, not just follow. What started in Takoradi with a small group of passionate musicians has grown into a powerful ensemble of nearly 80 members, blending Ghanaian rhythms, rich brass melodies, and unstoppable energy.
-      With every performance, they don’t just play music — they transform it into an experience. Brass carries the melody, percussion drives the heartbeat, and together they create a sound that fills streets, festivals, and international stages alike.
-      From weddings to global festivals, Elite Groovers have become more than a band — they are a movement of sound, culture, and joy.
+      Elite Groovers is a brass band with a big sound and a bigger spirit.
+      Born in Takoradi, Ghana, we began as a handful of friends playing for the love of music. 
+      Today we are nearly eighty strong and our music travels far beyond our hometown.
+    </p>
+    <p>
+      Our horns carry the melody, our drums drive the heartbeat, and together we bring an energy that lifts every stage. 
+      From local celebrations to international festivals, Elite Groovers make every moment unforgettable.
     </p>
   </section>
 
   <!-- Founder -->
   <section class="founder">
     <h2>Founder</h2>
-    <img src="images/founder-alex.jpg" alt="Founder Alex Halm">
+    <img src="ah.jpg" alt="Founder Alex Halm">
     <p style="text-align:center;">Alex Halm founded Elite Groovers with a vision to let brass instruments lead the sound, building a band that grew from a small group in Takoradi to an internationally recognized ensemble.</p>
   </section>
 
@@ -168,25 +179,18 @@
   <section class="band">
     <h2>Meet the Band</h2>
     <div class="grid">
-      <!-- Core Members (gold outline, but no label) -->
-      <img src="images/core1.jpg" class="core" alt="">
-      <img src="images/core2.jpg" class="core" alt="">
-      <img src="images/core3.jpg" class="core" alt="">
-      <img src="images/core4.jpg" class="core" alt="">
-      <img src="images/core5.jpg" class="core" alt="">
-      <img src="images/core6.jpg" class="core" alt="">
-      <img src="images/core7.jpg" class="core" alt="">
-      <img src="images/core8.jpg" class="core" alt="">
+      <!-- Core Members -->
+      <img src="cm.jpg" class="core" alt="">
+      <img src="cm2.jpg" class="core" alt="">
+      <img src="cm3.jpg" class="core" alt="">
+      <img src="cm4.jpg" class="core" alt="">
+      <img src="cm5.jpg" class="core" alt="">
       <!-- Other Members -->
-      <img src="images/member1.jpg" alt="">
-      <img src="images/member2.jpg" alt="">
-      <img src="images/member3.jpg" alt="">
-      <img src="images/member4.jpg" alt="">
-      <img src="images/member5.jpg" alt="">
-      <img src="images/member6.jpg" alt="">
-      <img src="images/member7.jpg" alt="">
-      <img src="images/member8.jpg" alt="">
-      <img src="images/member9.jpg" alt="">
+      <img src="m.jpg" alt="">
+      <img src="m2.jpg" alt="">
+      <img src="m4.jpg" alt="">
+      <img src="m5.jpg" alt="">
+      <img src="m9.jpg" alt="">
     </div>
   </section>
 
@@ -194,11 +198,10 @@
   <section class="fans">
     <h2>Fans & Community</h2>
     <div class="grid">
-      <img src="images/fan1.jpg" alt="">
-      <img src="images/fan2.jpg" alt="">
-      <img src="images/fan3.jpg" alt="">
-      <img src="images/fan4.jpg" alt="">
-      <img src="images/fan5.jpg" alt="">
+      <img src="f.jpg" alt="">
+      <img src="f2.jpg" alt="">
+      <img src="f3.jpg" alt="">
+      <img src="f4.jpg" alt="">
     </div>
   </section>
 
@@ -206,18 +209,19 @@
   <section class="gallery">
     <h2>Highlights</h2>
     <div class="grid">
-      <img src="images/highlight1.jpg" alt="">
-      <img src="images/highlight2.jpg" alt="">
-      <img src="images/highlight3.jpg" alt="">
-      <img src="images/highlight4.jpg" alt="">
-      <img src="images/highlight5.jpg" alt="">
+      <img src="e.jpg" alt="">
+      <img src="e2.jpg" alt="">
     </div>
   </section>
 
   <!-- Media -->
   <section class="media">
     <h2>Media</h2>
-    <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe>
+    <div class="videos">
+      <iframe src="https://www.youtube.com/embed/e73PEGQO31s" title="Elite Groovers - With You ft. Omah Lay" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/ruIb5ZdmvEU" title="Elite Groovers in UCC congregation" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/U-SB237NhRc" title="Elite Groovers tribute to KODA" allowfullscreen></iframe>
+    </div>
   </section>
 
   <!-- Events -->
