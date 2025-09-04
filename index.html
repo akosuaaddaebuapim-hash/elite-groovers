@@ -1,695 +1,235 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>Elite Groovers Brass Band</title>
+  <meta name="description" content="Elite Groovers – Ghana’s premier brass band. Rhythm, culture, and unmatched performances across the world. Book us today.">
+  <meta name="keywords" content="Elite Groovers, Ghana brass band, live music, brass band Africa, weddings, festivals, concerts">
+  <meta name="author" content="Scribe Haus Studio">
 
-  <!-- Fonts: cinematic title with clean body -->
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
   <style>
-    :root{
-      --gold: #d4af37;
-      --bg: #030304;
-      --card: #0b0b0b;
-      --muted: #bfbfbf;
-      --glass: rgba(255,255,255,0.03);
-      --ease: cubic-bezier(.2,.9,.2,1);
+    :root {
+      --gold:#d4af37;
+      --gold-50:rgba(212,175,55,.5);
+      --text:#f5f5f5;
+      --muted:#bdbdbd;
+      --card:#0b0b0b;
     }
-    html,body{height:100%;margin:0;background:var(--bg);color:#fff;font-family:Inter,system-ui,Roboto,Arial,sans-serif;scroll-behavior:smooth}
-    img{display:block;max-width:100%;height:auto}
-    a{color:inherit;text-decoration:none}
-    .wrap{max-width:1200px;margin:0 auto;padding:0 20px}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:Inter,sans-serif;background:#000;color:var(--text);scroll-behavior:smooth;line-height:1.6}
+    img{max-width:100%;display:block}
 
-    /* Nav */
-    .nav{position:fixed;left:50%;top:18px;transform:translateX(-50%);z-index:150;
-      background:linear-gradient(180deg, rgba(0,0,0,.72), rgba(0,0,0,.35));
-      border-radius:999px;padding:8px 12px;display:flex;gap:12px;align-items:center;border:1px solid rgba(212,175,55,.16);backdrop-filter:blur(6px)}
-    .nav img{width:36px;height:36px;object-fit:contain;filter:drop-shadow(0 0 8px rgba(212,175,55,.38))}
-    .nav a{font-weight:600;font-size:.95rem;padding:6px 8px;border-radius:8px;color:#eee}
-    .nav a:hover{color:var(--gold);background:rgba(255,255,255,0.02)}
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;background:rgba(0,0,0,.7);backdrop-filter:blur(8px);display:flex;justify-content:center;gap:20px;padding:12px;z-index:100}
+    nav a{color:#fff;text-decoration:none;font-weight:600}
+    nav a:hover{color:var(--gold)}
 
-    /* Hero cinematic */
-    header.hero{position:relative;height:100vh;display:grid;place-items:center;overflow:hidden}
-    .hero-stage{position:absolute;inset:0;z-index:0;overflow:hidden}
-    .hero-slide{position:absolute;inset:0;background-position:center;background-size:cover;opacity:0;transition:opacity 1.2s var(--ease), transform 14s linear}
-    .hero-slide.show{opacity:1;transform:scale(1.06)}
-    .hero-film{position:absolute;inset:0;mix-blend-mode:overlay;opacity:.07;background-image:url('https://www.transparenttextures.com/patterns/45-degree-fabric-light.png')}
-    .hero-particles{position:absolute;inset:0;z-index:1;pointer-events:none}
-    .particle{width:6px;height:6px;border-radius:50%;position:absolute;background:radial-gradient(circle,var(--gold),rgba(212,175,55,.22));opacity:.8;filter:blur(.6px)}
-    .hero-texture{position:absolute;inset:0;z-index:2;opacity:.12;background:url('https://www.transparenttextures.com/patterns/asfalt-dark.png')}
-    .hero-content{position:relative;z-index:18;text-align:center;padding:30px 20px}
-    .hero-logo{width:150px;height:150px;object-fit:contain;margin:0 auto 18px;filter:drop-shadow(0 0 20px rgba(212,175,55,.28));animation:logoPulse 3.6s infinite}
-    @keyframes logoPulse{0%{transform:translateY(0) scale(1)}50%{transform:translateY(-6px) scale(1.02)}100%{transform:translateY(0) scale(1)}}
-    .hero-title{font-family:Cinzel,serif;font-size:clamp(44px,8vw,110px);line-height:0.9;letter-spacing:.02em;background:linear-gradient(90deg,#fff,var(--gold),#fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-size:220% auto;animation:glide 8s linear infinite;margin-bottom:10px}
-    @keyframes glide{to{background-position:200% center}}
-    .hero-tag{font-size:1.15rem;color:#eee;margin:12px auto 22px;max-width:920px}
-    .hero-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-    .btn{padding:12px 18px;border-radius:12px;border:1px solid rgba(255,255,255,0.04);background:rgba(255,255,255,0.02);color:#fff;font-weight:700;cursor:pointer;transition:all .2s var(--ease)}
-    .btn.primary{background:linear-gradient(180deg,var(--gold),#b88b21);color:#000;border-color:#000;box-shadow:0 12px 30px rgba(212,175,55,.12)}
-    .btn:hover{transform:translateY(-4px);box-shadow:0 14px 40px rgba(0,0,0,.6)}
+    /* HERO */
+    header{height:100vh;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center;padding:20px}
+    .hero-bg img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:.35;z-index:-1}
+    .hero-content img{width:130px;margin-bottom:16px}
+    .hero-content h1{font-family:"Bebas Neue",sans-serif;font-size:clamp(42px,9vw,100px);color:var(--gold);text-shadow:0 0 20px #000}
+    .hero-content p{font-size:1.2rem;color:#eee;margin:12px auto 20px;max-width:800px}
 
-    .follow-strip{display:flex;gap:10px;justify-content:center;margin-top:14px;align-items:center}
-    .social-icon{width:36px;height:36px;display:inline-flex;align-items:center;justify-content:center;border-radius:10px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03);transition:all .18s}
-    .social-icon svg{width:18px;height:18px;fill:#fff}
-    .social-icon:hover{transform:translateY(-4px);box-shadow:0 10px 30px rgba(212,175,55,.12)}
-    .social-icon:hover svg{fill:var(--gold)}
+    /* SECTIONS */
+    section{padding:80px 20px;max-width:1200px;margin:auto}
+    h2{font-family:"Bebas Neue",sans-serif;font-size:clamp(28px,5vw,48px);color:var(--gold);margin-bottom:18px;text-align:center}
+    p.sub{color:var(--muted);text-align:center;margin-bottom:30px}
 
-    /* Sections */
-    section{padding:80px 0;border-top:1px solid rgba(255,255,255,0.04)}
-    .title{font-family:Cinzel,serif;color:var(--gold);font-size:clamp(28px,4.5vw,48px);text-align:center;margin:0 0 10px}
-    .sub{color:var(--muted);text-align:center;margin-bottom:22px}
-    .lead{max-width:900px;margin:10px auto;color:#eaeaea;text-align:center;line-height:1.6}
-    .quote{font-style:italic;color:var(--muted);text-align:center;margin:20px auto;max-width:720px}
+    /* GRID */
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px}
+    .grid img{border-radius:12px;transition:.3s}
+    .grid img:hover{transform:scale(1.05);box-shadow:0 0 20px var(--gold)}
 
-    /* Layout helpers */
-    .two-col{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center}
-    @media(max-width:1000px){.two-col{grid-template-columns:1fr}}
+    /* VIDEOS */
+    .videos{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
+    iframe{width:100%;aspect-ratio:16/9;border:none;border-radius:12px}
 
-    .card{background:var(--card);padding:20px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);box-shadow:0 12px 36px rgba(0,0,0,.6)}
-    .band-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px}
-    .band-grid img{width:100%;height:220px;object-fit:cover;border-radius:10px;transition:transform .35s var(--ease),box-shadow .35s var(--ease)}
-    .band-grid img:hover{transform:translateY(-6px) scale(1.03);box-shadow:0 30px 60px rgba(0,0,0,.6)}
-    .core-highlight{box-shadow:0 0 0 4px rgba(212,175,55,.06), 0 20px 60px rgba(212,175,55,.06)}
+    /* BOOKINGS */
+    .booking{background:var(--card);padding:30px;border-radius:12px}
+    .booking input,.booking textarea{width:100%;padding:12px;margin-bottom:12px;border-radius:8px;border:1px solid #333;background:#111;color:#fff}
+    .booking button{padding:12px 20px;border:none;background:var(--gold);color:#000;font-weight:bold;border-radius:8px;cursor:pointer}
+    .booking button:hover{opacity:.85}
 
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
-    .grid img{width:100%;height:240px;object-fit:cover;border-radius:12px;transition:transform .3s}
-    .grid img:hover{transform:scale(1.04);box-shadow:0 0 18px rgba(212,175,55,.14)}
+    /* MERCH */
+    .merch-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+    .item{background:var(--card);padding:14px;border-radius:12px;text-align:center}
+    .item img{height:200px;object-fit:cover;margin-bottom:8px;border-radius:8px}
+    .price{color:var(--gold);font-weight:700}
 
-    .videos{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:18px}
+    /* FUNZONE */
+    .fun{display:grid;gap:20px}
+    .fun-box{background:#111;padding:20px;border-radius:12px;border:1px solid rgba(255,255,255,.05)}
 
-    /* Booking */
-    .booking-card{max-width:880px;margin:0 auto}
-    .booking-card form{display:grid;gap:12px}
-    .booking-card input,.booking-card textarea{padding:12px;border-radius:8px;border:none;background:#0f0f0f;color:#fff}
-    .booking-note{color:var(--muted);text-align:center;margin-top:10px}
-
-    /* Fun zone */
-    .fun-grid{display:grid;grid-template-columns:1fr 360px;gap:22px}
-    @media(max-width:1000px){.fun-grid{grid-template-columns:1fr}}
-    .fun-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
-    .mascot{position:fixed;right:18px;bottom:18px;width:80px;height:80px;border-radius:18px;background:linear-gradient(180deg,var(--gold),#b88b21);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:260;box-shadow:0 20px 40px rgba(0,0,0,.6)}
-    .mascot img{width:54px;height:54px;object-fit:contain;filter:drop-shadow(0 4px 12px rgba(0,0,0,.6))}
-
-    footer{padding:28px 0;text-align:center;background:linear-gradient(180deg,#030303,#070707);color:#bfbfbf;border-top:1px solid rgba(255,255,255,.03)}
-    footer strong{color:#fff}
+    /* FOOTER */
+    footer{text-align:center;padding:30px;background:#111;margin-top:60px;color:var(--muted)}
     footer span{color:var(--gold)}
 
-    .reveal{opacity:0;transform:translateY(18px);transition:all .8s var(--ease)}
-    .reveal.show{opacity:1;transform:none}
+    /* MASCOT */
+    .mascot{position:fixed;bottom:20px;right:20px;width:90px;cursor:pointer;z-index:200;animation:bounce 3s infinite}
+    @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
   </style>
 </head>
 <body>
 
-  <!-- nav -->
-  <nav class="nav" aria-label="Main navigation">
-    <img src="images/logo.jpg" alt="Elite Groovers logo" id="logoClick" aria-hidden="false">
+  <!-- NAV -->
+  <nav>
     <a href="#about">About</a>
     <a href="#founder">Founder</a>
     <a href="#band">Band</a>
     <a href="#fans">Fans</a>
     <a href="#highlights">Highlights</a>
     <a href="#media">Media</a>
-    <a href="#funzone">Fans and fun</a>
     <a href="#events">Events</a>
     <a href="#merch">Merch</a>
+    <a href="#fun">Funzone</a>
     <a href="#contact">Contact</a>
   </nav>
 
-  <!-- hero -->
-  <header class="hero" id="top" role="banner" aria-label="Hero section">
-    <div class="hero-stage" aria-hidden="true">
-      <div class="hero-slide" style="background-image:url('images/hs.jpg')" id="slide1"></div>
-      <div class="hero-slide" style="background-image:url('images/hs2.jpg')" id="slide2"></div>
-      <div class="hero-film"></div>
-      <div class="hero-particles" id="particles"></div>
-      <div class="hero-texture"></div>
+  <!-- HERO -->
+  <header>
+    <div class="hero-bg">
+      <img src="hs.jpg" alt="Hero background">
     </div>
-
     <div class="hero-content">
-      <img src="images/logo.jpg" alt="Elite Groovers logo" class="hero-logo" id="heroLogo">
-      <div class="hero-title" aria-hidden="true">ELITE GROOVERS</div>
-      <div class="hero-tag">Brass that leads. Rhythm that moves. Born in Ghana, heard around the world.</div>
-
-      <div class="hero-cta" role="group" aria-label="Hero actions">
-        <a class="btn primary" href="#events">Next Event</a>
-        <a class="btn" href="#media">Watch live</a>
-      </div>
-
-      <div class="follow-strip" aria-hidden="true" style="margin-top:18px">
-        <div style="font-size:.95rem;color:var(--muted);margin-right:10px">Follow us</div>
-        <a class="social-icon" href="https://www.tiktok.com/@elitegroovers24" target="_blank" title="TikTok" aria-label="TikTok">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 3v12.5a3.5 3.5 0 1 0 3.5-3.5V7h4.5V3H9z"/></svg>
-        </a>
-        <a class="social-icon" href="https://www.instagram.com/elite.groovers" target="_blank" title="Instagram" aria-label="Instagram">
-          <svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 6.5A4.5 4.5 0 1 0 16.5 13 4.5 4.5 0 0 0 12 8.5zM18.5 6a1 1 0 1 1-1-1 1 1 0 0 1 1 1z"/></svg>
-        </a>
-        <a class="social-icon" href="https://www.youtube.com/@elitegrovers" target="_blank" title="YouTube" aria-label="YouTube">
-          <svg viewBox="0 0 24 24"><path d="M10 15l5.2-3L10 9v6zM21.8 8s-.2-1.5-.8-2.1c-.7-.8-1.5-.8-1.9-.9C16.5 4.7 12 4.7 12 4.7h0s-4.6 0-7.1.2c-.4 0-1.2.1-1.9.9C2.5 6.5 2.3 8 2.3 8S2 9.8 2 11.5v1C2 14.3 2.3 16 2.3 16s.2 1.5.8 2.1c.7.8 1.6.8 2 .9 1.5.2 6.9.2 6.9.2s4.6 0 7.1-.2c.4 0 1.2-.1 1.9-.9.6-.6.8-2.1.8-2.1s.3-1.7.3-3.4v-1c0-1.7-.3-3.5-.3-3.5z"/></svg>
-        </a>
-        <a class="social-icon" href="https://www.facebook.com/elitegrovers" target="_blank" title="Facebook" aria-label="Facebook">
-          <svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.5 9.9V14.9h-2.3v-2.9h2.3V10c0-2.3 1.4-3.6 3.4-3.6.98 0 2 .18 2 .18v2.2h-1.12c-1.1 0-1.45.7-1.45 1.4v1.7h2.48l-.4 2.9H15v7A10 10 0 0 0 22 12z"/></svg>
-        </a>
-        <a class="social-icon" href="https://www.snapchat.com/add/elitegroovers24" target="_blank" title="Snapchat" aria-label="Snapchat">
-          <svg viewBox="0 0 24 24"><path d="M12 2.2c-1.8 0-3.4.9-4.4 2.4C6.4 3.1 5 2.2 3.4 2.2S.4 3.1.4 4.6c0 2.1.9 4.2 2.5 6.3 1 1.3 2.2 2.7 1.9 4.9.9-.2 1.7-.4 2.6-.4 3.1 0 5.1 3.5 6.6 3.5s3.5-3.5 6.6-3.5c.9 0 1.7.2 2.6.4-.3-2.2.9-3.6 1.9-4.9 1.6-2.1 2.5-4.2 2.5-6.3C23.6 3.1 22.2 2.2 20.6 2.2S17.6 3.1 16.6 4.6c-1-.7-2.6-2.4-4.6-2.4z"/></svg>
-        </a>
-      </div>
+      <img src="logo.jpg" alt="Elite Groovers Logo">
+      <h1>Elite Groovers</h1>
+      <p>Brass that leads. Rhythm that moves. A sound born in Ghana, made for the world.</p>
     </div>
   </header>
 
-  <!-- about -->
-  <section id="about" class="reveal" aria-labelledby="aboutTitle">
-    <div class="wrap">
-      <h2 id="aboutTitle" class="title">About Elite Groovers</h2>
-      <p class="sub">More than music a sound shaped by brass and rhythm</p>
-      <p class="lead">Elite Groovers started in Takoradi with a small circle of friends and a single idea. Let brass carry the story. Today the band is nearly eighty strong and brings stage ready energy to weddings parades festivals and international shows.</p>
-      <p class="quote">“Where words fail music speaks”</p>
+  <!-- ABOUT -->
+  <section id="about">
+    <h2>About Elite Groovers</h2>
+    <p class="sub">More than music — a movement of rhythm, culture, and energy.</p>
+    <p>Elite Groovers prove that brass can lead, not just follow. What began in Takoradi as a small group of friends is now nearly 80 strong. With soaring brass, driving percussion, and Ghanaian rhythm, they create performances that transform every event into a celebration.</p>
+  </section>
+
+  <!-- FOUNDER -->
+  <section id="founder">
+    <h2>Founder Alex Halm</h2>
+    <div style="text-align:center">
+      <img src="ah.jpg" alt="Founder Alex Halm" style="width:200px;border-radius:50%;border:3px solid var(--gold);margin-bottom:16px">
+      <p>Alex Halm founded Elite Groovers with one belief: brass can carry the story. His vision built a band known for powerful sound, flawless performances, and a growing international community.</p>
     </div>
   </section>
 
-  <!-- founder -->
-  <section id="founder" class="reveal" aria-labelledby="founderTitle">
-    <div class="wrap">
-      <h2 id="founderTitle" class="title">Founder Alex Halm</h2>
-      <p class="sub">Vision craft community</p>
+  <!-- MEET THE BAND -->
+  <section id="band">
+    <h2>Meet the Band</h2>
+    <div class="grid">
+      <img src="cm.jpg" alt="Core Member">
+      <img src="cm2.jpg" alt="Core Member">
+      <img src="cm3.jpg" alt="Core Member">
+      <img src="cm4.jpg" alt="Core Member">
+      <img src="cm5.jpg" alt="Core Member">
+      <img src="m.jpg" alt="Member">
+      <img src="m2.jpg" alt="Member">
+      <img src="m4.jpg" alt="Member">
+      <img src="m5.jpg" alt="Member">
+      <img src="m9.jpg" alt="Member">
+    </div>
+  </section>
 
-      <div class="two-col" style="margin-top:20px">
-        <div class="card">
-          <h3 style="margin-bottom:8px">Leadership in sound</h3>
-          <p class="lead" style="margin:0">Alex founded the band with one clear idea let brass lead the conversation. His vision turned a local group into a tight ensemble that plays with joy precision and heart.</p>
-          <p class="quote" style="margin-top:12px">“The sound of many becomes the voice of one”</p>
-        </div>
+  <!-- FANS -->
+  <section id="fans">
+    <h2>Fans & Community</h2>
+    <div class="grid">
+      <img src="f.jpg" alt="Fans">
+      <img src="f2.jpg" alt="Fans">
+      <img src="f3.jpg" alt="Fans">
+      <img src="f4.jpg" alt="Fans">
+    </div>
+  </section>
 
-        <div>
-          <img src="images/ah.jpg" alt="Alex Halm founder portrait" style="border-radius:12px;box-shadow:0 20px 50px rgba(0,0,0,.6)">
-        </div>
+  <!-- HIGHLIGHTS -->
+  <section id="highlights">
+    <h2>Highlights</h2>
+    <div class="grid">
+      <img src="e.jpg" alt="Highlight">
+      <img src="e2.jpg" alt="Highlight">
+    </div>
+  </section>
+
+  <!-- MEDIA -->
+  <section id="media">
+    <h2>Media</h2>
+    <div class="videos">
+      <iframe src="https://www.youtube.com/embed/ruIb5ZdmvEU" title="Performance 1" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/21nskFKgaps" title="Performance 2" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/e73PEGQO31s" title="Performance 3" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <!-- EVENTS & BOOKINGS -->
+  <section id="events">
+    <h2>Events & Bookings</h2>
+    <div class="booking">
+      <form action="mailto:elitegroovers24@gmail.com" method="post" enctype="text/plain">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="text" name="contact" placeholder="Email or WhatsApp" required>
+        <input type="text" name="event" placeholder="Event Date & City" required>
+        <textarea name="details" rows="4" placeholder="Tell us about your event" required></textarea>
+        <button type="submit">Send Booking Request</button>
+      </form>
+      <p style="margin-top:12px;text-align:center;color:var(--muted)">Or WhatsApp us directly: <a href="https://wa.me/233558770933" style="color:var(--gold)">0558770933</a></p>
+    </div>
+  </section>
+
+  <!-- MERCH -->
+  <section id="merch">
+    <h2>Merch</h2>
+    <div class="merch-grid">
+      <div class="item">
+        <img src="merch1.jpg" alt="Merch placeholder">
+        <p><strong>Classic Tee</strong></p>
+        <p class="price">$25</p>
+      </div>
+      <div class="item">
+        <img src="merch2.jpg" alt="Merch placeholder">
+        <p><strong>Elite Cap</strong></p>
+        <p class="price">$20</p>
       </div>
     </div>
   </section>
 
-  <!-- band -->
-  <section id="band" class="reveal" aria-labelledby="bandTitle">
-    <div class="wrap">
-      <h2 id="bandTitle" class="title">Meet the band</h2>
-      <p class="sub">One family many voices</p>
-
-      <div style="margin-top:20px" class="band-grid" role="list">
-        <!-- core -->
-        <img src="images/cm.jpg" alt="Core member" class="core-highlight" role="listitem">
-        <img src="images/cm1.jpg" alt="Core member" class="core-highlight" role="listitem">
-        <img src="images/cm2.jpg" alt="Core member" class="core-highlight" role="listitem">
-        <img src="images/cm3.jpg" alt="Core member" class="core-highlight" role="listitem">
-        <img src="images/cm4.jpg" alt="Core member" class="core-highlight" role="listitem">
-        <img src="images/cm5.jpg" alt="Core member" class="core-highlight" role="listitem">
-
-        <!-- others -->
-        <img src="images/m.jpg" alt="Band member" role="listitem">
-        <img src="images/m2.jpg" alt="Band member" role="listitem">
-        <img src="images/m4.jpg" alt="Band member" role="listitem">
-        <img src="images/m5.jpg" alt="Band member" role="listitem">
-        <img src="images/m9.jpg" alt="Band member" role="listitem">
-      </div>
+  <!-- FUNZONE -->
+  <section id="fun">
+    <h2>Funzone</h2>
+    <div class="fun">
+      <div class="fun-box">🎵 <strong>Song Request Jukebox</strong> – Suggest songs you’d love arranged for brass.</div>
+      <div class="fun-box">🎺 <strong>Mascot Corner</strong> – Meet our cheeky trumpet mascot who drops fun trivia.</div>
+      <div class="fun-box">❓ <strong>Weekly Quiz</strong> – Test your music knowledge and climb the leaderboard.</div>
+      <div class="fun-box">💬 <strong>Fan Wall</strong> – Leave us a message or emoji reaction!</div>
+      <div class="fun-box">📊 <strong>Polls</strong> – Vote on which song we should play next.</div>
     </div>
   </section>
 
-  <!-- fans -->
-  <section id="fans" class="reveal" aria-labelledby="fansTitle">
-    <div class="wrap">
-      <h2 id="fansTitle" class="title">Fans and community</h2>
-      <p class="sub">The heartbeat of Elite Groovers</p>
-
-      <div style="margin-top:20px" class="grid">
-        <img src="images/f.jpg" alt="Fan photo">
-        <img src="images/f2.jpg" alt="Fan photo">
-        <img src="images/f3.jpg" alt="Fan photo">
-        <img src="images/f4.jpg" alt="Fan photo">
-      </div>
-    </div>
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <p class="sub">Connect with Elite Groovers on social media:</p>
+    <p style="text-align:center">
+      TikTok: <strong>elitegroovers24</strong><br>
+      Instagram: <strong>elite.groovers</strong><br>
+      YouTube: <strong>elite grovers</strong><br>
+      Facebook: <strong>elite grovers</strong><br>
+      Snapchat: <strong>elitegroovers24</strong><br>
+      Email: <a href="mailto:elitegroovers24@gmail.com" style="color:var(--gold)">elitegroovers24@gmail.com</a>
+    </p>
   </section>
 
-  <!-- highlights -->
-  <section id="highlights" class="reveal" aria-labelledby="highlightsTitle">
-    <div class="wrap">
-      <h2 id="highlightsTitle" class="title">Highlights</h2>
-      <p class="sub">Moments from festivals tours and shows</p>
-
-      <div style="margin-top:20px" class="grid">
-        <img src="images/e.jpg" alt="Highlight image">
-        <img src="images/e2.jpg" alt="Highlight image">
-      </div>
-    </div>
-  </section>
-
-  <!-- media -->
-  <section id="media" class="reveal" aria-labelledby="mediaTitle">
-    <div class="wrap">
-      <h2 id="mediaTitle" class="title">Media</h2>
-      <p class="sub">Watch performances and tributes</p>
-
-      <div style="margin-top:20px" class="videos">
-        <div class="card" role="group" aria-label="YouTube videos">
-          <iframe src="https://www.youtube.com/embed/ruIb5ZdmvEU" title="UCC 56th Congregation" allowfullscreen></iframe>
-        </div>
-        <div class="card" role="group" aria-label="YouTube videos">
-          <iframe src="https://www.youtube.com/embed/21nskFKgaps" title="KODA Tribute" allowfullscreen></iframe>
-        </div>
-        <div class="card" role="group" aria-label="YouTube videos">
-          <iframe src="https://www.youtube.com/embed/e73PEGQO31s" title="With You cover" allowfullscreen></iframe>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FunZone -->
-  <section id="funzone" class="reveal" aria-labelledby="funTitle">
-    <div class="wrap">
-      <h2 id="funTitle" class="title">Fans and fun zone</h2>
-      <p class="sub">Request a song play quizzes leave a message and find hidden surprises</p>
-
-      <div class="fun-grid" style="margin-top:20px">
-        <div>
-          <!-- Jukebox -->
-          <div class="fun-card card" aria-label="Song request jukebox">
-            <h3>Song request jukebox</h3>
-            <p class="muted">Suggest a song to arrange for brass</p>
-            <!-- Google Form placeholder for song requests
-                 Create a Google Form in elitegroovers24@gmail.com and replace the href below -->
-            <div style="margin-top:8px">
-              <a class="btn primary" href="https://docs.google.com/forms/d/PLACEHOLDER_song_request" target="_blank">Request a song</a>
-              <div style="color:var(--muted);margin-top:8px">Or use the quick form below to email the band</div>
-            </div>
-
-            <form id="jukeboxForm" style="margin-top:12px">
-              <input name="song" placeholder="Song title" style="width:100%;padding:10px;border-radius:8px;border:none;background:#0e0e0e;color:#fff;margin-top:8px">
-              <input name="artist" placeholder="Artist name" style="width:100%;padding:10px;border-radius:8px;border:none;background:#0e0e0e;color:#fff;margin-top:8px">
-              <textarea name="notes" rows="3" placeholder="Any notes" style="width:100%;padding:10px;border-radius:8px;border:none;background:#0e0e0e;color:#fff;margin-top:8px"></textarea>
-              <div style="display:flex;gap:8px;margin-top:10px">
-                <button type="button" class="btn primary" onclick="submitJukebox()">Send request</button>
-                <button type="button" class="btn" onclick="saveLocalRequest()">Save locally</button>
-              </div>
-              <p class="muted" style="margin-top:10px">Requests are sent to the band email by default. We can later switch to Google Forms for management.</p>
-            </form>
-          </div>
-
-          <!-- Trivia -->
-          <div class="fun-card card" style="margin-top:16px" aria-label="Weekly trivia">
-            <h3>Weekly trivia</h3>
-            <p class="muted">Quick music questions with a leaderboard</p>
-            <div id="triviaBox" style="margin-top:10px">
-              <div id="question" style="font-weight:700"></div>
-              <div id="answers" style="margin-top:10px"></div>
-              <div style="margin-top:10px">
-                <button class="btn" onclick="nextTrivia()">Next question</button>
-                <div style="margin-top:10px;color:var(--muted)" id="triviaResult"></div>
-              </div>
-            </div>
-            <div style="margin-top:12px">
-              <h4 style="margin:6px 0">Leaderboard</h4>
-              <ol id="leaderboard" style="color:var(--muted);margin:0 0 0 18px;padding:0"></ol>
-            </div>
-          </div>
-
-          <!-- Poll -->
-          <div class="fun-card card" style="margin-top:16px" aria-label="Poll">
-            <h3>Poll</h3>
-            <p class="muted">Which song should we play next</p>
-            <div id="pollOptions" style="margin-top:10px"></div>
-            <div style="margin-top:10px;color:var(--muted)" id="pollResult"></div>
-            <div style="margin-top:10px;color:var(--muted)">Google Form placeholder for official polls: <a href="https://docs.google.com/forms/d/PLACEHOLDER_poll" target="_blank">Create poll</a></div>
-          </div>
-        </div>
-
-        <aside>
-          <!-- Mascot corner -->
-          <div class="fun-card card" style="margin-bottom:16px" aria-label="Mascot corner">
-            <h3>Mascot corner</h3>
-            <p class="muted">Click the mascot for trivia jokes and surprise sounds</p>
-            <div style="display:flex;align-items:center;gap:12px;margin-top:12px">
-              <div style="flex:0 0 120px"><img src="images/logo.jpg" alt="mascot logo" style="border-radius:12px;filter:drop-shadow(0 10px 30px rgba(0,0,0,.6))"></div>
-              <div><div id="mascotText" style="font-weight:700">Hello from the mascot</div><div style="color:var(--muted);margin-top:6px" id="mascotSub">Click the mascot button to the bottom right</div></div>
-            </div>
-          </div>
-
-          <!-- Fan wall -->
-          <div class="fun-card card" aria-label="Fan wall">
-            <h3>Fan wall</h3>
-            <p class="muted">Leave a short message or emoji</p>
-            <!-- Google Form placeholder for fan wall
-                 Create a Google Form in elitegroovers24@gmail.com and replace the link below -->
-            <div style="margin-top:8px">
-              <a class="btn" href="https://docs.google.com/forms/d/PLACEHOLDER_fan_wall" target="_blank">Open fan wall form</a>
-            </div>
-
-            <form id="fanForm" style="margin-top:8px">
-              <input name="fanName" placeholder="Your name or handle" style="width:100%;padding:10px;border-radius:8px;border:none;background:#0e0e0e;color:#fff;margin-bottom:8px">
-              <input name="fanMessage" placeholder="Message or emoji" style="width:100%;padding:10px;border-radius:8px;border:none;background:#0e0e0e;color:#fff;margin-bottom:8px">
-              <div style="display:flex;gap:8px">
-                <button type="button" class="btn primary" onclick="postFan()">Post</button>
-                <button type="button" class="btn" onclick="clearFan()">Clear</button>
-              </div>
-            </form>
-
-            <div style="margin-top:12px;max-height:220px;overflow:auto;border-radius:8px;padding:8px;background:#060606" id="fanWall" aria-live="polite"></div>
-          </div>
-
-          <!-- Easter eggs -->
-          <div class="fun-card card" style="margin-top:16px" aria-label="Hidden surprises">
-            <h3>Hidden surprises</h3>
-            <p class="muted">Click the logo or the mascot to trigger a short brass sound</p>
-            <button class="btn" onclick="playOompah()">Test sound</button>
-          </div>
-        </aside>
-      </div>
-    </div>
-  </section>
-
-  <!-- events and booking -->
-  <section id="events" class="reveal" aria-labelledby="eventsTitle">
-    <div class="wrap">
-      <h2 id="eventsTitle" class="title">Events and bookings</h2>
-      <p class="sub">Book Elite Groovers for festivals weddings and private events</p>
-
-      <div class="booking-card card" style="margin-top:18px">
-        <div style="display:grid;grid-template-columns:1fr 360px;gap:20px;align-items:start">
-          <div>
-            <h3 style="margin-top:0">Upcoming shows</h3>
-            <div id="upcomingList" style="color:var(--muted)"></div>
-            <p style="margin-top:12px;color:var(--muted)">Want to host Elite Groovers Send a booking request below or message us on WhatsApp</p>
-          </div>
-
-          <div>
-            <form id="bookingForm" style="display:grid;gap:12px">
-              <input name="bName" placeholder="Your name" required>
-              <input name="bEmail" type="email" placeholder="Email address" required>
-              <input name="bPhone" placeholder="Phone or WhatsApp" required>
-              <input name="bDate" placeholder="Event date and city" required>
-              <textarea name="bDetails" rows="4" placeholder="Tell us about your event" required></textarea>
-
-              <div style="display:flex;gap:8px;align-items:center">
-                <button type="button" class="btn primary" onclick="sendBooking()">Send booking request</button>
-                <a class="btn" href="https://wa.me/233558770933" target="_blank">Message on WhatsApp</a>
-              </div>
-            </form>
-            <p class="booking-note" style="margin-top:10px">We reply by email or WhatsApp to confirm availability and next steps</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- merch -->
-  <section id="merch" class="reveal" aria-labelledby="merchTitle">
-    <div class="wrap">
-      <h2 id="merchTitle" class="title">Merch</h2>
-      <p class="sub">Official gear coming soon</p>
-
-      <div style="margin-top:20px" class="grid">
-        <div class="card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:260px">
-          <img src="images/merch_tee.jpg" alt="Merch tee placeholder" style="height:140px;object-fit:cover;border-radius:8px;margin-bottom:12px">
-          <strong>EG Classic tee</strong>
-          <div style="color:var(--muted);margin-top:8px">Black and gold</div>
-        </div>
-
-        <div class="card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:260px">
-          <img src="images/merch_cap.jpg" alt="Merch cap placeholder" style="height:140px;object-fit:cover;border-radius:8px;margin-bottom:12px">
-          <strong>EG Cap</strong>
-          <div style="color:var(--muted);margin-top:8px">Signature crest</div>
-        </div>
-
-        <div class="card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:260px">
-          <img src="images/merch_hoodie.jpg" alt="Merch hoodie placeholder" style="height:140px;object-fit:cover;border-radius:8px;margin-bottom:12px">
-          <strong>Tour hoodie</strong>
-          <div style="color:var(--muted);margin-top:8px">Limited edition</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- contact -->
-  <section id="contact" class="reveal" aria-labelledby="contactTitle">
-    <div class="wrap">
-      <h2 id="contactTitle" class="title">Contact</h2>
-      <p class="sub">Bookings press and partnerships</p>
-
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:880px;margin:20px auto 0">
-        <div class="card">
-          <h4 style="margin:0 0 8px;color:var(--gold)">Email</h4>
-          <p style="margin:0"><a href="mailto:elitegroovers24@gmail.com" style="color:var(--gold)">elitegroovers24@gmail.com</a></p>
-        </div>
-        <div class="card">
-          <h4 style="margin:0 0 8px;color:var(--gold)">WhatsApp</h4>
-          <p style="margin:0"><a href="https://wa.me/233558770933" style="color:var(--gold)">+233 55 877 0933</a></p>
-        </div>
-      </div>
-
-      <div style="text-align:center;margin-top:18px;color:var(--muted)">
-        <a href="https://www.tiktok.com/@elitegroovers24" target="_blank">TikTok</a>
-        <span style="margin:0 8px">•</span>
-        <a href="https://www.instagram.com/elite.groovers" target="_blank">Instagram</a>
-        <span style="margin:0 8px">•</span>
-        <a href="https://www.youtube.com/@elitegrovers" target="_blank">YouTube</a>
-        <span style="margin:0 8px">•</span>
-        <a href="https://www.facebook.com/elitegrovers" target="_blank">Facebook</a>
-        <span style="margin:0 8px">•</span>
-        <a href="https://www.snapchat.com/add/elitegroovers24" target="_blank">Snapchat</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- footer -->
+  <!-- FOOTER -->
   <footer>
-    <div class="wrap">
-      <p style="margin:0">© 2025 Elite Groovers • <span>Scribe Haus Studio</span></p>
-    </div>
+    © <strong>Elite Groovers</strong> • <span>Scribe Haus Studio</span>
   </footer>
 
-  <!-- mascot button -->
-  <div class="mascot" id="mascotBtn" role="button" aria-label="Mascot corner">
-    <img src="images/logo.jpg" alt="mascot logo small">
-  </div>
+  <!-- MASCOT -->
+  <img src="mascot.png" alt="Mascot" class="mascot" onclick="alert('Oompah! The groove is strong 🎺')">
 
-  <!-- Scripts -->
-  <script>
-    // Hero slideshow
-    (function(){
-      const slides = Array.from(document.querySelectorAll('.hero-slide'));
-      let idx = 0;
-      function show(i){
-        slides.forEach((s,si)=> s.classList.toggle('show', si === i));
-      }
-      show(0);
-      setInterval(()=>{ idx = (idx + 1) % slides.length; show(idx); }, 7000);
-    })();
-
-    // Particles
-    (function(){
-      const node = document.getElementById('particles');
-      if(!node) return;
-      const count = 24;
-      for(let i=0;i<count;i++){
-        const p = document.createElement('div');
-        p.className = 'particle';
-        p.style.left = (Math.random()*100)+'%';
-        p.style.top = (Math.random()*100)+'%';
-        p.style.opacity = (0.25 + Math.random()*0.6);
-        const scale = (0.4 + Math.random()*1.6);
-        p.style.transform = 'scale(' + scale + ')';
-        node.appendChild(p);
-        // subtle float
-        (function(el, ox, oy, s){
-          let t = Math.random()*100;
-          function tick(){
-            t += 0.003 + Math.random()*0.007;
-            el.style.transform = 'translate3d(' + Math.sin(t+ox)*6 + 'px,' + Math.cos(t+oy)*4 + 'px,0) scale(' + s + ')';
-            requestAnimationFrame(tick);
-          }
-          tick();
-        })(p, Math.random()*10, Math.random()*10, scale);
-      }
-    })();
-
-    // Reveal on scroll
-    (function(){
-      const obs = new IntersectionObserver((entries)=>{
-        entries.forEach(e=>{
-          if(e.isIntersecting) e.target.classList.add('show');
-        });
-      }, {threshold:0.12});
-      document.querySelectorAll('.reveal').forEach(el=> obs.observe(el));
-    })();
-
-    // Jukebox quick email
-    function submitJukebox(){
-      const form = document.getElementById('jukeboxForm');
-      if(!form) return;
-      const data = new FormData(form);
-      const song = encodeURIComponent(data.get('song')||'');
-      const artist = encodeURIComponent(data.get('artist')||'');
-      const notes = encodeURIComponent(data.get('notes')||'');
-      const subject = encodeURIComponent('Song request Elite Groovers: ' + song + ' by ' + artist);
-      const body = encodeURIComponent('Song: ' + decodeURIComponent(song) + '\\nArtist: ' + decodeURIComponent(artist) + '\\nNotes: ' + decodeURIComponent(notes));
-      window.location.href = 'mailto:elitegroovers24@gmail.com?subject='+subject+'&body='+body;
-    }
-    function saveLocalRequest(){
-      const f = document.getElementById('jukeboxForm');
-      const data = new FormData(f);
-      const list = JSON.parse(localStorage.getItem('eg_jukebox')||'[]');
-      list.unshift({song:data.get('song'), artist:data.get('artist'), notes:data.get('notes'), time:Date.now()});
-      localStorage.setItem('eg_jukebox', JSON.stringify(list));
-      alert('Saved locally');
-    }
-
-    // Fan wall local storage
-    function postFan(){
-      const f = document.getElementById('fanForm');
-      const data = new FormData(f);
-      const name = (data.get('fanName')||'anon').trim();
-      const msg = (data.get('fanMessage')||'').trim();
-      if(!msg){ alert('Please type a short message'); return; }
-      const wall = JSON.parse(localStorage.getItem('eg_fanWall')||'[]');
-      wall.unshift({name: name || 'anon', msg, time: Date.now()});
-      localStorage.setItem('eg_fanWall', JSON.stringify(wall));
-      renderFans();
-      f.reset();
-    }
-    function renderFans(){
-      const el = document.getElementById('fanWall');
-      if(!el) return;
-      const wall = JSON.parse(localStorage.getItem('eg_fanWall')||'[]');
-      el.innerHTML = wall.map(item=>`<div style="padding:8px;border-bottom:1px solid rgba(255,255,255,.03)"><strong style="display:block">${escapeHtml(item.name)}</strong><div style="color:var(--muted);margin-top:6px">${escapeHtml(item.msg)}</div></div>`).join('');
-    }
-    function clearFan(){ localStorage.removeItem('eg_fanWall'); renderFans(); }
-
-    // Trivia and leaderboard
-    const trivia = [
-      {q:'Which brass instrument plays low notes', a:['Trumpet','Trombone','Tuba','Clarinet'], ans:2},
-      {q:'What country is Elite Groovers from', a:['Nigeria','Ghana','Kenya','South Africa'], ans:1},
-      {q:'Which instrument often carries the melody in brass bands', a:['Tuba','Percussion','Trumpet','Bass'], ans:2}
-    ];
-    let triviaIndex = 0;
-    function nextTrivia(){
-      const box = document.getElementById('question');
-      const answers = document.getElementById('answers');
-      const res = document.getElementById('triviaResult');
-      if(triviaIndex >= trivia.length) triviaIndex = 0;
-      const t = trivia[triviaIndex];
-      box.textContent = t.q;
-      answers.innerHTML = t.a.map((opt,i)=>`<div style="margin-bottom:8px"><button class="btn" onclick="answerTrivia(${i})">${escapeHtml(opt)}</button></div>`).join('');
-      res.textContent = '';
-      triviaIndex++;
-    }
-    function answerTrivia(i){
-      const correct = trivia[(triviaIndex-1 + trivia.length) % trivia.length];
-      const res = document.getElementById('triviaResult');
-      if(i === correct.ans){
-        res.textContent = 'Correct';
-        res.style.color = 'lightgreen';
-        const name = prompt('Nice. Enter your name for the leaderboard') || 'anon';
-        const lb = JSON.parse(localStorage.getItem('egLeaderboard')||'[]');
-        lb.unshift({name, time: Date.now()});
-        localStorage.setItem('egLeaderboard', JSON.stringify(lb));
-        renderLeaderboard();
-      } else {
-        res.textContent = 'Try another';
-        res.style.color = 'salmon';
-      }
-    }
-    function renderLeaderboard(){
-      const list = JSON.parse(localStorage.getItem('egLeaderboard')||'[]').slice(0,10);
-      const el = document.getElementById('leaderboard');
-      if(!el) return;
-      el.innerHTML = list.map(l=>`<li style="margin-bottom:6px">${escapeHtml(l.name)}</li>`).join('');
-    }
-
-    // Poll
-    const pollKey = 'egPoll';
-    function initPoll(){
-      const options = ['Play that cover song','Play the new arrangement','Play an old classic'];
-      const el = document.getElementById('pollOptions');
-      const stored = JSON.parse(localStorage.getItem(pollKey) || 'null') || {counts: Array(options.length).fill(0)};
-      localStorage.setItem(pollKey, JSON.stringify(stored));
-      el.innerHTML = options.map((opt, i)=>`<div style="margin-bottom:8px"><button class="btn" onclick="votePoll(${i})">${escapeHtml(opt)}</button></div>`).join('') + '<div style="margin-top:10px;color:var(--muted)" id="pollCounts"></div>';
-      renderPoll();
-    }
-    function votePoll(i){
-      const data = JSON.parse(localStorage.getItem(pollKey) || '{}');
-      data.counts[i] = (data.counts[i]||0) + 1;
-      localStorage.setItem(pollKey, JSON.stringify(data));
-      renderPoll();
-    }
-    function renderPoll(){
-      const el = document.getElementById('pollResult');
-      const data = JSON.parse(localStorage.getItem(pollKey) || '{}');
-      if(!data.counts) return;
-      el.innerHTML = '<div style="color:var(--muted)">Current votes: ' + data.counts.join(' | ') + '</div>';
-    }
-
-    // Booking mailto fallback
-    function sendBooking(){
-      const f = document.getElementById('bookingForm');
-      if(!f) return;
-      const data = new FormData(f);
-      const name = encodeURIComponent(data.get('bName') || '');
-      const email = encodeURIComponent(data.get('bEmail') || '');
-      const phone = encodeURIComponent(data.get('bPhone') || '');
-      const date = encodeURIComponent(data.get('bDate') || '');
-      const details = encodeURIComponent(data.get('bDetails') || '');
-      const subject = encodeURIComponent('Booking request Elite Groovers');
-      const body = `Name: ${decodeURIComponent(name)}%0D%0AEmail: ${decodeURIComponent(email)}%0D%0APhone: ${decodeURIComponent(phone)}%0D%0ADate and city: ${decodeURIComponent(date)}%0D%0A%0D%0ADetails:%0D%0A${decodeURIComponent(details)}`;
-      window.location.href = `mailto:elitegroovers24@gmail.com?subject=${subject}&body=${body}`;
-    }
-
-    // Mascot and logo click easter egg
-    document.getElementById('mascotBtn').addEventListener('click', ()=> {
-      const jokes = [
-        'Why did the trumpet sit near the door It liked to make an entrance',
-        'Tuba joke it likes to keep things low and steady',
-        'Fans bring the groove and the band brings the gold'
-      ];
-      const t = jokes[Math.floor(Math.random()*jokes.length)];
-      document.getElementById('mascotText').textContent = t;
-      playOompah();
-    });
-    document.getElementById('logoClick').addEventListener('click', ()=> {
-      playOompah();
-      // subtle interaction no spam
-    });
-
-    // simple oompah using WebAudio
-    function playOompah(){
-      try{
-        const ctx = new (window.AudioContext || window.webkitAudioContext)();
-        const o = ctx.createOscillator();
-        const g = ctx.createGain();
-        o.type = 'sawtooth';
-        o.frequency.value = 110;
-        g.gain.value = 0.0001;
-        o.connect(g); g.connect(ctx.destination);
-        const now = ctx.currentTime;
-        g.gain.setValueAtTime(0.0001, now);
-        g.gain.exponentialRampToValueAtTime(0.12, now + 0.02);
-        g.gain.exponentialRampToValueAtTime(0.001, now + 0.45);
-        o.start(now); o.stop(now + 0.5);
-      }catch(e){
-        console.warn('Audio not allowed', e);
-      }
-    }
-
-    // helpers
-    function escapeHtml(str){ return String(str||'').replace(/[&<>"']/g, s=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[s])); }
-
-    // init
-    (function init(){
-      renderFans();
-      renderLeaderboard();
-      nextTrivia();
-      initPoll();
-      renderPoll();
-      // upcoming sample events
-      const up = document.getElementById('upcomingList');
-      if(up) up.innerHTML = '<div style="color:var(--muted)">Sept 20 2025 Takoradi Parade</div><div style="color:var(--muted);margin-top:6px">Oct 15 2025 Accra Festival</div>';
-    })();
-  </script>
 </body>
 </html>
